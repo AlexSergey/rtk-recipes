@@ -1,3 +1,4 @@
+import { ReactElement } from 'react';
 import { List } from 'antd';
 
 import { ITask } from '../../types/task';
@@ -9,13 +10,13 @@ interface ITodoListProps {
   onRemovalTask: (task: ITask) => void;
 }
 
-export const TodoList = ({ todos, onRemovalTask, onUpdateTask }: ITodoListProps): JSX.Element => (
+export const TodoList = ({ todos, onRemovalTask, onUpdateTask }: ITodoListProps): ReactElement => (
   <List
     locale={{
       emptyText: "There's nothing to do :(",
     }}
     dataSource={todos}
-    renderItem={(todo): JSX.Element => (
+    renderItem={(todo): ReactElement => (
       <TodoItem todo={todo} onRemovalTask={onRemovalTask} onUpdateTask={onUpdateTask} />
     )}
     pagination={{

@@ -2,7 +2,14 @@ import { useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { AppDispatch, IRootState } from '../store';
-import { createTask, fetchAllTasks, ITaskSlice, removeTask, updateTask } from '../store/slices/tasks-slice';
+import {
+  createTask,
+  fetchAllTasks,
+  ITaskSlice,
+  removeTask,
+  selectorAllTasks,
+  updateTask
+} from '../store/slices/tasks-slice';
 import { ITask } from '../types/task';
 
 interface IUseTaskMutation {
@@ -13,7 +20,7 @@ interface IUseTaskMutation {
 
 export const useFetchTasks = (): ITaskSlice => {
   const dispatch = useDispatch<AppDispatch>();
-  const query = useSelector((state: IRootState) => state.tasks);
+  const query = useSelector(selectorAllTasks);
 
   const { isLoading, isError, data } = query;
 

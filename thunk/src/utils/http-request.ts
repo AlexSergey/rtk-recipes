@@ -9,12 +9,6 @@ import axios, {
 
 export type HttpPromise<T = any> = AxiosPromise<T>;
 
-export interface Request {
-  headers?: AxiosRequestConfig['headers'];
-  data?: any;
-  params?: AxiosRequestConfig['params'];
-}
-
 export class HttpClient {
   private httpClient: AxiosInstance;
 
@@ -30,10 +24,10 @@ export class HttpClient {
   private async handleRequest<T>(
     url: string,
     method: Method,
-    config: Request = {},
+    config: AxiosRequestConfig = {},
   ): Promise<AxiosResponse<T>> {
     const { headers, data, params } = config;
-    let c: { method: Method, url: string } & Request;
+    let c: { method: Method, url: string } & AxiosRequestConfig;
     c = { url, method, data, params };
     if (headers) {
       c.headers = headers;
@@ -52,23 +46,23 @@ export class HttpClient {
     return config;
   }
 
-  public get<T>(url: string, config: Request = {}): AxiosPromise<T> {
+  public get<T>(url: string, config: AxiosRequestConfig = {}): AxiosPromise<T> {
     return this.handleRequest<T>(url, 'get', config);
   }
 
-  public post<T>(url: string, config: Request = {}): AxiosPromise<T> {
+  public post<T>(url: string, config: AxiosRequestConfig = {}): AxiosPromise<T> {
     return this.handleRequest<T>(url, 'post', config);
   }
 
-  public put<T>(url: string, config: Request = {}): AxiosPromise<T> {
+  public put<T>(url: string, config: AxiosRequestConfig = {}): AxiosPromise<T> {
     return this.handleRequest<T>(url, 'put', config);
   }
 
-  public delete<T>(url: string, config: Request = {}): AxiosPromise<T> {
+  public delete<T>(url: string, config: AxiosRequestConfig = {}): AxiosPromise<T> {
     return this.handleRequest<T>(url, 'delete', config);
   }
 
-  public patch<T>(url: string, config: Request = {}): AxiosPromise<T> {
+  public patch<T>(url: string, config: AxiosRequestConfig = {}): AxiosPromise<T> {
     return this.handleRequest<T>(url, 'patch', config);
   }
 

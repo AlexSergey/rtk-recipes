@@ -1,3 +1,4 @@
+import { ReactElement } from 'react';
 import { PlusCircleFilled } from '@ant-design/icons';
 import { Form, Row, Col, Button, Input } from 'antd';
 
@@ -7,7 +8,7 @@ interface IAddTodoFormProps {
   onFormSubmit: (value: string) => void;
 }
 
-export const AddTodoForm = ({ onFormSubmit }: IAddTodoFormProps): JSX.Element => {
+export const AddTodoForm = ({ onFormSubmit }: IAddTodoFormProps): ReactElement => {
   const [form] = Form.useForm();
 
   const onFinish = (): void => {

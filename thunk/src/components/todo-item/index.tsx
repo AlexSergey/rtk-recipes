@@ -1,3 +1,4 @@
+import { ReactElement } from 'react';
 import { CloseOutlined, CheckOutlined } from '@ant-design/icons';
 import { Tooltip, Tag, List, Button, Popconfirm, Switch } from 'antd';
 
@@ -10,7 +11,7 @@ interface ITodoItemProps {
   onRemovalTask: (task: ITask) => void;
 }
 
-export const TodoItem = ({ todo, onRemovalTask, onUpdateTask }: ITodoItemProps): JSX.Element => {
+export const TodoItem = ({ todo, onRemovalTask, onUpdateTask }: ITodoItemProps): ReactElement => {
   return (
     <List.Item
       actions={[
